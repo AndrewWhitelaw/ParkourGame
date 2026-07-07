@@ -1,0 +1,1 @@
+laserTimer = 120;

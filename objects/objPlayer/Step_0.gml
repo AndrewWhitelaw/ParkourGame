@@ -7,6 +7,7 @@ yspeed += grav;
 if(jumpKey && place_meeting(x, y+1, objGround))
 {
     yspeed = jumpSpeed;
+    counter = 1;
 }
 
 //Collisions
@@ -33,6 +34,16 @@ if (place_meeting(x + xspeed, y+yspeed, objGround))
     
     yspeed = 0;
 	
+}
+
+//level clear
+if place_meeting(x,y,objFlag){
+    room_goto_next();
+}
+
+//Level losing
+if place_meeting(x,y,objLava){
+    room_restart();
 }
 
 x += xspeed;

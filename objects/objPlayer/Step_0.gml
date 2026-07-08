@@ -4,6 +4,7 @@ jumpKey = keyboard_check_pressed(vk_space);
 
 xspeed = (rightKey - leftKey) * moveSpeed;
 yspeed += grav;
+
 if(jumpKey && place_meeting(x, y+1, objGround))
 {
     yspeed = jumpSpeed;
@@ -46,5 +47,38 @@ if place_meeting(x,y,objLava){
     room_restart();
 }
 
+mask_index = sprite[IDLE];
+if yspeed == 0
+{
+    if xspeed > 0{face = RIGHT};
+    if xspeed < 0{face = LEFT};    
+}
+if xspeed > 0 && face == LEFT{
+    face = RIGHT;
+}
+if  xspeed < 0 && face == RIGHT{
+    face = LEFT;
+}
+if xspeed == 0
+{
+    if yspeed > 0{face = IDLE};
+}
+if yspeed > 0{
+    face = IDLE;
+}  
+if yspeed == 0 && xspeed == 0 {
+    face = IDLE;
+}
+sprite_index = sprite[face]
+
+
 x += xspeed;
 y += yspeed;
+
+//Animate
+if xspeed == 0 && yspeed == 0{
+    image_index = 0;
+}
+
+//depth
+depth = -bbox_bottom;

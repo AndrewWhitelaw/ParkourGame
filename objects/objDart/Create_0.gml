@@ -1,4 +1,4 @@
-fireRate = 90;        
+fireRate = 60;        
 dartSpeed = 4;
 direction_facing = -1; 
 
